@@ -15,4 +15,14 @@ class Converter:
         data = requests.get(str(SITE)+"".join(list(filter(lambda word: word not in ['\"', "\'"], API_KEY)))).json()
 
         #Список всех валют
-        self.all_rates = set(data["rates"].keys())
+        self.__all_rates = set(data["rates"].keys())
+
+    def get_all_rates(self):
+        """
+        Возвращает список всех валют
+        :return:
+        """
+        return list(self.__all_rates)
+
+    def __str__(self):
+        return "Class Converter.\nreturn: all_rates, convert currencies"
