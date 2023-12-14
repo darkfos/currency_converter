@@ -43,7 +43,7 @@ class Application:
         button_check = tkinter.Button(text="Рассчитать", font="arial 10", borderwidth=3, command= lambda:
             self.click_button('EUR' if self.cmbox_1.get() == '' else self.cmbox_1.get(),
                               'EUR' if self.cmbox_2.get() == '' else str(self.cmbox_2.get()),
-                              0 if self.entry_all_money.get() == '' else float(self.entry_all_money.get())))
+                              0 if self.entry_all_money.get() == '' or self.entry_all_money.get().isalpha() else float(self.entry_all_money.get())))
 
         button_clear = tkinter.Button(text="Очистить", font="arial 10", borderwidth=3, command=lambda: self.entry_answer.delete(0, len(self.entry_answer.get())))
 
