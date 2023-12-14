@@ -11,7 +11,7 @@ class Converter:
         """
 
         parser = configparser.ConfigParser()
-        parser.read('../auth.ini')
+        parser.read('auth.ini')
 
         #Данные АПИ сервиса
         self.__API_KEY = "".join(filter(lambda word: word not in "\'\"", parser.get('auth', "API_KEY")))
@@ -29,7 +29,7 @@ class Converter:
         """
         return list(self.__all_rates)
 
-    def convert_values(self, type_val_1: str, type_val_2: str, value: Mapping[float, int]) -> Mapping[str, float, int]:
+    def convert_values(self, type_val_1: str, type_val_2: str, value: Mapping[float, int]):
         """
         Метод конвертации валют
         :param type_val_1:
@@ -38,19 +38,15 @@ class Converter:
         :return:
         """
 
-        try:
-            initial_value = value
-            if type_val_1 != "EUR":
-                initial_value = initial_value / self.data["rates"][type_val_1]
-            result = initial_value * self.data["rates"][type_val_2]
+        initial_value = value
+        if type_val_1 != "EUR":
+            initial_value = initial_value / self.data["rates"][type_val_1]
+        result = initial_value * self.data["rates"][type_val_2]
 
-            result = round(initial_value * self.data["rates"][type_val_2], 2)
+        result = round(initial_value * self.data["rates"][type_val_2], 2)
+        return str(result)
 
-            return result
-        except:
-            return "Error to convert currencies"
 
 
     def __str__(self):
         return "Class Converter.\nreturn: all_rates, convert currencies"
-
