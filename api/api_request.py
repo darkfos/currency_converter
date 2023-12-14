@@ -20,7 +20,7 @@ class Converter:
         self.data = requests.get(self.SITE+"/latest?access_key="+self.__API_KEY).json()
 
         #Список всех валют
-        self.__all_rates = set(self.data["rates"].keys())
+        self.__all_rates = sorted(set(self.data["rates"].keys()))
 
     def get_all_rates(self) -> list:
         """
