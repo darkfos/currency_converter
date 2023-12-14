@@ -45,6 +45,9 @@ class Application:
                               'EUR' if self.cmbox_2.get() == '' else str(self.cmbox_2.get()),
                               0 if self.entry_all_money.get() == '' else float(self.entry_all_money.get())))
 
+        button_clear = tkinter.Button(text="Очистить", font="arial 10", borderwidth=3, command=lambda: self.entry_answer.delete(0, len(self.entry_answer.get())))
+
+
         # Установка объектов
         label_1.grid(row=0, column=0)
         self.cmbox_1.grid(row=0, column=1)
@@ -56,9 +59,10 @@ class Application:
         self.cmbox_2.grid(row=2, column=1)
 
         button_check.grid(row=3, columnspan=2)
-        label_4.grid(row=4, column=0)
+        button_clear.grid(row=4, columnspan=2)
+        label_4.grid(row=5, column=0)
 
-        self.entry_answer.grid(row=4, column=1)
+        self.entry_answer.grid(row=5, column=1)
 
     def display_appliction(self):
         """
